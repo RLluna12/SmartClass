@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editar Notas</title>
+  <!-- 追加：外部のスタイルシート -->
+  <!-- <link rel="stylesheet" href="styles/professores.css" /> -->
+  <!-- <link rel="stylesheet" href="styles/style.css" /> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../css/bootstrap.css">
+  <!-- Bootstrap Datepicker CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    rel="stylesheet">
+  <style>
+    .icon-container {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .icon-container img {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+    }
+
+    .img-home1 {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ナビゲーションバーのコードを貼り付け -->
+  <nav class="navbar navbar-dark bg-dark fixed-top" style="background-color: transparent">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+        aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Smart Class</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/home">Home</a>
+            </li>
+            <% if (user.id_perfil === 2 || user.id_perfil === 3 || user.id_perfil === 4) { %> 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Notas e Faltas
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <% if (user.id_perfil === 2) { %><!-- quando e Professor --> 
+                  <li><a class="dropdown-item" href="/apricarNotas">Apricar Notas</a></li>
+                  <li><a class="dropdown-item" href="/apricarFaltas">Apricar Faltas</a></li>
+                <% } %>
+                <% if (user.id_perfil === 3) { %><!-- quando e Aluno --> 
+                <li><a class="dropdown-item" href="/veriNotas">Notas</a></li>
+                <li><a class="dropdown-item" href="/veriFaltas">Faltas</a></li>
+                <% } %>
+                <% if (user.id_perfil === 4) { %><!-- quando e Responsaveis --> 
+                  <li><a class="dropdown-item" href="/veriResponsavel">Verificar Notas e faltas</a></li>
+                <% } %>
+              </ul>
+            </li>
+            <% } %>
+            <% if (user.id_perfil === 1 || user.id_perfil === 5) { %> 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Cadastramentos
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="/turma">Turma</a></li>
+                <li><a class="dropdown-item" href="/disciplina">Disciplinas</a></li>
+                <li><a class="dropdown-item" href="/cadastrarUsuario">Usuarios</a></li>
+                <li><a class="dropdown-item" href="/organizacao">Organizacao</a></li>
+              </ul>
+            </li>
+            <% } %>
+            <li class="nav-item">
+              <a class="nav-link" href="/calendario">Calendario</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dadosCadastrais">Dados Cadastrais</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+        
+        <% if (user.id_perfil === 3) { %><!-- quando e Aluno --> 
+          <div id="user-info" data-id-aluno="<%= user.id_aluno %>" data-nome-usuario="<%= user.nome_usuario %>"
+            class="d-flex align-items-end">
+            <p class="opacity-0">ID: <%= user.id_aluno %> Nome: <%= user.nome_usuario %></p>
+          </div>
+        <% } %>
+        <% if (user.id_perfil === 4) { %><!-- quando e Responsaveis --> 
+          <div id="user-info2" data-id-responsavel="<%= user.id_responsavel %>" data-nome-usuario-resp="<%= user.nome_usuario %>"
+            class="d-flex align-items-end">
+          <p class="opacity-0">ID: <%= user.id_responsavel %> Nome: <%= user.nome_usuario %></p>
+          </div>
+        <% } %>
+
+      </div>
+      <a href="/home" class="mx-auto d-block">
+        <img src="/icons/smartclass.png" alt="smartclassIcon" class="img-home">
+      </a>
+      <a href="/mural" class="float-right d-block">
+        <img src="/icons/notificacao.png" alt="smartclassIcon" class="img-home1">
+      </a>
+    </div>
+  </nav>
+
+
+
+
+  <!-- 以下、ベースのHTMLファイルのコンテンツを続ける -->
+  <div class="container mt-5">
+    <h1>Editar Nota</h1>
+    <form id="editNotaForm">
+      <div class="form-group">
+        <label for="nomeAluno">Nome do Aluno</label>
+        <input type="text" class="form-control" id="nomeAluno" disabled>
+      </div>
+      <div class="form-group">
+        <label for="faltasAluno">Faltas do Aluno</label>
+        <input type="text" class="form-control" id="faltasAluno" disabled>
+      </div>
+      <div class="form-group">
+        <label for="n1Input">N1</label>
+        <input type="number" class="form-control" id="n1Input" step="0.1" min="0" max="10">
+      </div>
+      <div class="form-group">
+        <label for="apInput">AP</label>
+        <input type="number" class="form-control" id="apInput" step="0.1" min="0" max="10">
+      </div>
+      <div class="form-group">
+        <label for="aiInput">AI</label>
+        <input type="number" class="form-control" id="aiInput" step="0.1" min="0" max="10">
+      </div>
+      <div class="form-group">
+        <label for="anoAluno">Ano</label>
+        <input type="number" class="form-control" id="anoAluno" disabled>
+      </div>
+      <div class="form-group">
+        <label for="matriculaAluno">Data de matricula</label>
+        <input type="text" class="form-control" id="matriculaAluno" disabled>
+      </div>
+      <div class="form-group">
+        <label for="semestreAluno">Semestre</label>
+        <input type="number" class="form-control" id="semestreAluno" disabled>
+      </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+  </div>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap Datepicker JS -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+  <script src="./js/profJs/editarNotas.js">
+  </script>
+</body>
+
+</html>

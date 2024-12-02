@@ -1,0 +1,216 @@
+/* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #218838;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+ */
+
+ body {
+  background-color: #000000; /* Fundo preto */
+  color: #fff; /* Texto branco */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#logo-container {
+  text-align: center;
+  margin-bottom: 70px; /* Ajuste a margem conforme necessário */
+}
+
+#logo {
+  width: 200px; /* Ajuste a largura conforme necessário */
+  height: auto; /* Isso mantém a proporção da imagem */
+  border-radius: 50%;
+}
+
+#login-container {
+  text-align: center;
+}
+
+#email,
+#password,
+#password2 {
+  width: 300px;
+  margin-bottom: 100px;
+  padding: 8px;
+  background-color: transparent; /* Caixas de texto transparentes */
+  border: none; /* Remove a borda */
+  border-bottom: 1px solid #fff; /* Adiciona uma borda branca na parte inferior */
+  color: #fff; /* Texto branco */
+  display: block; /* Certifica-se de que cada campo de texto ocupa toda a largura disponível */
+}
+
+#email {
+  margin-bottom: 10px; /* Espaçamento entre as caixas de texto */
+}
+
+#forgot-password {
+    text-decoration: underline;
+    margin-bottom: 20px; /* Espaçamento abaixo do texto 'Esqueci minha senha' */
+}
+
+#login-button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#forgot-password {
+  padding-bottom: 10px;
+}
+
+#login-button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#loading-spinner {
+    display: none; /* Oculta o spinner por padrão */
+}
+
+#error-message-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; /* Adiciona uma margem na parte inferior para compensar a altura da mensagem de erro */
+}
+
+#error-message {
+    color: red;
+    display: none; /* Oculta a mensagem de erro por padrão */
+}
+
+.error-visible #error-message {
+    display: block; /* Exibe a mensagem de erro quando a classe .error-visible é adicionada */
+}
+
+
+.password-container {
+    position: relative; /* Posicionamento relativo para o contêiner do campo de senha */
+}
+
+
+
+
+
+
+div a {
+  color: #fff;
+}
+
+
+body {
+  background-color: #141418;
+  /* Cor de fundo cinza */
+  color: #ffffff;
+  /* Cor do texto branca */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#logo {
+  width: 150px;
+  /* Ajuste o tamanho da imagem conforme necessário */
+  height: 150px;
+  margin-bottom: 120px;
+  /* Adiciona espaço abaixo da imagem do logo */
+}
+
+#alerta {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.form-control {
+  background-color: transparent;
+  /* Caixa de texto transparente */
+  color: #ffffff;
+  /* Cor do texto branca */
+}
+
+.input-group-prepend {
+  margin-right: 10px;
+  /* Espaçamento entre a imagem de alerta e o texto */
+}
+
+
+
+
+
+#password {
+  position: relative;
+}
+#show-password-btn {
+    position: absolute; /* Posicionamento absoluto sobre o campo de senha */
+    top: 50%; /* Alinha no centro verticalmente */
+    right: 10px; /* Alinha à direita */
+    transform: translateY(-50%); /* Ajusta verticalmente */
+    padding: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+}

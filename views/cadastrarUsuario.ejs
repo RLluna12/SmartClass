@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alterar Cadastro</title>
+  <!-- 追加：外部のスタイルシート -->
+  <!-- <link rel="stylesheet" href="styles/professores.css" /> -->
+  <!-- <link rel="stylesheet" href="styles/style.css" /> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <!-- Bootstrap Datepicker CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    rel="stylesheet">
+  <style>
+    .icon-container {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .icon-container img {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+    }
+
+    .img-home1 {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ナビゲーションバーのコードを貼り付け -->
+  <nav class="navbar navbar-dark bg-dark fixed-top" style="background-color: transparent">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+        aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Smart Class</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/home">Home</a>
+            </li>
+            <% if (user.id_perfil === 2 || user.id_perfil === 3 || user.id_perfil === 4) { %> 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Notas e Faltas
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <% if (user.id_perfil === 2) { %><!-- quando e Professor --> 
+                  <li><a class="dropdown-item" href="/apricarNotas">Apricar Notas</a></li>
+                  <li><a class="dropdown-item" href="/apricarFaltas">Apricar Faltas</a></li>
+                <% } %>
+                <% if (user.id_perfil === 3) { %><!-- quando e Aluno --> 
+                <li><a class="dropdown-item" href="/veriNotas">Notas</a></li>
+                <li><a class="dropdown-item" href="/veriFaltas">Faltas</a></li>
+                <% } %>
+                <% if (user.id_perfil === 4) { %><!-- quando e Responsaveis --> 
+                  <li><a class="dropdown-item" href="/veriResponsavel">Verificar Notas e faltas</a></li>
+                <% } %>
+              </ul>
+            </li>
+            <% } %>
+            <% if (user.id_perfil === 1 || user.id_perfil === 5) { %> 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Cadastramentos
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="/turma">Turma</a></li>
+                <li><a class="dropdown-item" href="/disciplina">Disciplinas</a></li>
+                <li><a class="dropdown-item" href="/cadastrarUsuario">Usuarios</a></li>
+                <li><a class="dropdown-item" href="/organizacao">Organizacao</a></li>
+              </ul>
+            </li>
+            <% } %>
+            <li class="nav-item">
+              <a class="nav-link" href="/calendario">Calendario</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dadosCadastrais">Dados Cadastrais</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+        
+        <% if (user.id_perfil === 3) { %><!-- quando e Aluno --> 
+          <div id="user-info" data-id-aluno="<%= user.id_aluno %>" data-nome-usuario="<%= user.nome_usuario %>"
+            class="d-flex align-items-end">
+            <p class="opacity-0">ID: <%= user.id_aluno %> Nome: <%= user.nome_usuario %></p>
+          </div>
+        <% } %>
+        <% if (user.id_perfil === 4) { %><!-- quando e Responsaveis --> 
+          <div id="user-info2" data-id-responsavel="<%= user.id_responsavel %>" data-nome-usuario-resp="<%= user.nome_usuario %>"
+            class="d-flex align-items-end">
+          <p class="opacity-0">ID: <%= user.id_responsavel %> Nome: <%= user.nome_usuario %></p>
+          </div>
+        <% } %>
+
+      </div>
+      <a href="/home" class="mx-auto d-block">
+        <img src="/icons/smartclass.png" alt="smartclassIcon" class="img-home">
+      </a>
+      <a href="/mural" class="float-right d-block">
+        <img src="/icons/notificacao.png" alt="smartclassIcon" class="img-home1">
+      </a>
+    </div>
+  </nav>
+
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-header">
+            <h1>Cadastro de Usuário</h1>
+          </div>
+          <div class="card-body">
+            <form id="cadastroUsuarioForm">
+              <!-- Nome do Usuário -->
+              <div class="mb-3">
+                <label for="nome_usuario" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome_usuario" name="nome_usuario" required>
+              </div>
+              <!-- CPF do Usuário -->
+              <div class="mb-3">
+                <label for="cpf_usuario" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf_usuario" name="cpf_usuario" required>
+              </div>
+              <!-- Endereço do Usuário -->
+              <div class="mb-3">
+                <label for="endereco_usuario" class="form-label">Endereço</label>
+                <input type="text" class="form-control" id="endereco_usuario" name="endereco_usuario">
+              </div>
+              <!-- Telefone do Usuário -->
+              <div class="mb-3">
+                <label for="telefone_usuario" class="form-label">Telefone</label>
+                <input type="text" class="form-control" id="telefone_usuario" name="telefone_usuario">
+              </div>
+              <!-- Email do Usuário -->
+              <div class="mb-3">
+                <label for="email_usuario" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email_usuario" name="email_usuario" required>
+              </div>
+              <!-- Data de Nascimento -->
+              <div class="mb-3">
+                <label for="nascimento_usuario" class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" id="nascimento_usuario" name="nascimento_usuario">
+              </div>
+              <!-- Senha -->
+              <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" required>
+              </div>
+              <!-- Perfil do Usuário -->
+              <div class="mb-3">
+                <label for="id_perfil" class="form-label">Perfil</label>
+                <select class="form-select" id="id_perfil" name="id_perfil" required>
+                  <option value="">Selecione o Perfil</option>
+                  <option value="1">1-Admin</option>
+                  <option value="2">2-Professor</option>
+                  <option value="3">3-Aluno</option>
+                  <option value="4">4-Responsável</option>
+                  <option value="5">5-Secretaria</option>
+                  <option value="6">6-Coordenação Pedagógica</option>
+                </select>
+              </div>
+              <!-- Número de Registro (RA) para Aluno -->
+              <div class="mb-3" id="raField" style="display:none;">
+                <label for="ra_aluno" class="form-label">Número de Registro</label>
+                <input type="text" class="form-control" id="ra_aluno" name="ra_aluno" step="1" min="0">
+              </div>
+              <!-- Data de Matrícula -->
+              <div class="mb-3" id="dataMatriculaField" style="display:none;">
+                <label for="data_matricula" class="form-label">Data de Matrícula</label>
+                <input type="date" class="form-control" id="data_matricula" name="data_matricula">
+              </div>
+              <!-- Botão de Cadastro -->
+              <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Formulário de Edição -->
+      <div class="col-md-6">
+
+        <form id="updateUsuarioForm">
+          <h2>Editar Usuário</h2>
+          <div class="form-group">
+            <input type="text" class="form-control" id="editUsuarioId" placeholder="ID do Usuário" required disabled>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="editUsuarioNome" placeholder="Nome" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="editUsuarioCPF" placeholder="CPF" step="1" min="0" required>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" id="editUsuarioEmail" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="editUsuarioTelefone" placeholder="Telefone" step="1" min="0"
+              required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="editUsuarioEndereco" placeholder="Endereço" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="editUsuarioID_Perfil" placeholder="ID_Perfil" step="1" min="1"
+              max="6" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Atualizar</button>
+          <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Cancelar</button>
+        </form>
+      </div>
+
+    </div>
+
+    <h1 class="mt-5">Usuários</h1>
+    <div class="containerTable" style="overflow-y: auto; max-height: 400px;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>ID_Perfil</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="usuariosTableBody" class="overflow-auto">
+          <!-- Linhas serão inseridas aqui via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+
+  <script>
+    // Mostrar ou ocultar campos específicos com base no perfil selecionado
+    document.getElementById('id_perfil').addEventListener('change', function () {
+      const raField = document.getElementById('raField');
+      const dataMatriculaField = document.getElementById('dataMatriculaField');
+
+      if (this.value === '3') { // Se o perfil selecionado for "Aluno"
+        raField.style.display = 'block';
+        dataMatriculaField.style.display = 'block';
+      } else {
+        raField.style.display = 'none';
+        dataMatriculaField.style.display = 'none';
+      }
+    });
+
+
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap Datepicker JS -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+  <script src="../js/cadastrarUsuario.js">
+  </script>
+</body>
+
+</html>

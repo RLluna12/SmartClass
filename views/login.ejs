@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <div>
+
+    <div id="logo-container">
+      <img src="/icons/logo.jpg" alt="Logo" id="logo">
+    </div>
+    <div>
+      <% if (message.length> 0) { %>
+        <p>
+          <%= message %>
+        </p>
+      <% } %>
+        <form action="/login" method="POST">
+          <label for="email_usuario">E-mail:</label>
+          <input type="email" id="email_usuario" name="email_usuario" required>
+
+          <label for="senha">Password:</label>
+          <input type="password" id="senha" name="senha" required>
+
+          <p id="forgot-password"><a href="/forgot-password">Esqueceu sua senha?</a></p> 
+
+          <button type="submit" class="btn btn-dark" id="login-button">Login</button>
+          <img id="loading-spinner" src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif" alt="Carregando...">
+          <div id="error-message-container">
+        </form>
+          <!-- <p><a href="/register">アカウントを作成する</a></p> --><!-- 追加部分 -->
+    </div>
+  </div>
+</body>
+
+</html>
