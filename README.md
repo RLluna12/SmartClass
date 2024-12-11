@@ -21,7 +21,16 @@
 - **Hospedagem**: Hostinger.
 
 ---
+## 🖼️ Galeria de Imagens
 
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+  
+<img src="https://github.com/RLluna12/SmartClass/blob/main/public/icons/Screenshot_20241209-120237~2.png" alt="Imagem 1" width="350">
+  <img src="https://github.com/RLluna12/SmartClass/blob/main/public/icons/Screenshot_20241209-120829~2.png" alt="Imagem 2" width="350">
+  <img src="https://github.com/RLluna12/SmartClass/blob/main/public/icons/Screenshot_20241209-120617~2.png" alt="Imagem 4" width="350">
+  <img src="https://github.com/RLluna12/SmartClass/blob/main/public/icons/Screenshot_20241209-120729~2.png" alt="Imagem 3" width="350">
+  
+</div>
 
 ## 🌟 Demonstração
 
